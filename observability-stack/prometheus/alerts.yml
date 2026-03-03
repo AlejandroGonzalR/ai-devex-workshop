@@ -1,0 +1,27 @@
+groups:
+  - name: sli-alerts
+    rules:
+      - alert: HighErrorRate
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"5.."}[5m]))
+            /
+            sum(rate(http_requests_total[5m]))
+          ) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate >5% for more than 5 minutes"
+
+  - name: host-alerts # Rule for easy demo alert triggering
+    rules:
+      - alert: NodeExporterDown
+        expr: up{job="test-app"} == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Node exporter is down"
+          description: "Metrics endpoint unreachable for 5 minutes."
