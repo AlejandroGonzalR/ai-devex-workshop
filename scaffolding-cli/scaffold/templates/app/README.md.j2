@@ -1,0 +1,24 @@
+# {{ service_name }}
+
+Kotlin Spring Boot microservice.
+
+## Run
+
+./gradlew bootRun
+
+## Health
+
+GET /health
+
+## Docker
+
+docker build -t {{ service_name }} .
+docker run -p 8080:8080 {{ service_name }}
+
+## Infrastructure
+
+cd terraform
+terraform init
+terraform apply
+
+Generated: {{ created }}
