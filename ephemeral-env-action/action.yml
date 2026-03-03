@@ -1,0 +1,20 @@
+name: "Preview Environment"
+description: "Ephemeral environment lifecycle manager"
+
+inputs:
+  action:
+    description: up | down
+    required: true
+  pr-number:
+    required: true
+  app-path:
+    required: false
+    default: "."
+
+outputs:
+  preview-url:
+    description: Generated preview URL
+
+runs:
+  using: node20
+  main: dist/index.js
