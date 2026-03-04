@@ -6,11 +6,11 @@ from scaffold.microservice.microservice import Create
 
 @click.group()
 @click.option('--name',
-              help='The environment where the static front-end application should be published.',
+              help='The name of the new microservice. This will be the project folder name.',
               type=click.STRING,
               required=True)
 @click.option('--type',
-              help='The environment where the static front-end application should be published.',
+              help='The type of new microservice.',
               type=click.Choice(APP_TYPES),
               required=True)
 @click.pass_context
