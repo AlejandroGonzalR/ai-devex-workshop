@@ -1,4 +1,5 @@
 import abc
+import click
 
 from datetime import datetime
 from pathlib import Path
@@ -32,6 +33,10 @@ class MicroserviceStep(Step, abc.ABC):
 
 class Create(MicroserviceStep):
     def execute(self) -> None:
+        # TODO: Add Structural Pattern Matching for more application types
+        self.__create_api() if self.params.app_type == "api" else self.__create_worker()
+    
+    def __create_api(self) -> None:
         app_root = Path(".generated", self.params.app_name)
 
         pkg = f"com.example.{self.params.app_name}"
@@ -44,3 +49,6 @@ class Create(MicroserviceStep):
 
         for template, destination in map_app_templates(pkg):
             self.jinja.render(template, app_root / destination, **ctx)
+
+    def __create_worker(self) -> None:
+        click.echo('Not implemented yet.')
