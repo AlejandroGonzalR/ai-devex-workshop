@@ -14,6 +14,19 @@ This action provisions isolated environments on demand, exposes a unique preview
 
 ---
 
+## Project setup
+
+Previous to any interaction please ensure the following:
+
+- Node.js LTS version (24.x)
+- NPM LTS version (11.x)
+
+These requirements are fixed into [package.json](./package.json) engine configuration.
+
+This action uses NCC, so it is not recomendable to dockerize the project to have full manage of running environment, instead delegating it to Docker sock.
+
+---
+
 ## Architecture Overview
 
 ```markdown
