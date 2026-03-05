@@ -64,7 +64,13 @@ scaffold microservice --name={ms-name} --type={ms-type} create
 ```
 
 After executing you will see:
-[image]
+
+<figure>
+    <img src="./docs/images/generated_app.png" alt="generated image" width="300">
+    <figcaption>Generated demo ´Checkout´ application.</figcaption>
+</figure>
+
+---
 
 > **Important!**
 >> A better option for this implementation can be using GitHub template repositories instead generating locally the microservice code, this will allow more robust maintability for microservices repositories, versioning and more, but this option is not easily replicable using a mono-repository in a personal GitHub account.

@@ -75,6 +75,12 @@ Metrics:
 docker compose up -d
 ```
 
+or
+
+```bash
+make docker/up
+```
+
 This command automatically:
 
 - Start Prometheus
@@ -112,6 +118,13 @@ SLI → Service + Infrastructure SLI Dashboard
 
 Dashboards are **immutable** and recreated at container startup.
 
+You will see:
+
+<figure>
+    <img src="./docs/images/mounted_dashboard.png" alt="dashboard">
+    <figcaption>Grafana SLI Dashboard.</figcaption>
+</figure>
+
 ---
 
 ## Testing Alerts (Chaos Validation)
@@ -130,11 +143,27 @@ Expected behavior:
 | <5 minutes  | alert pending |
 | ≥5 minutes  | alert firing  |
 
+<figure>
+    <img src="./docs/images/simulated_error.png" alt="dashboard-error">
+    <figcaption>Scrape fails (No data).</figcaption>
+</figure>
+
+---
+
 Check alerts:
 
 ```markdown
 http://localhost:9090/alerts
 ```
+
+After 5 minutes the alert will trigger:
+
+<figure>
+    <img src="./docs/images/alert.png" alt="alert">
+    <figcaption>Prometheus alerts.</figcaption>
+</figure>
+
+---
 
 Restart exporter:
 
